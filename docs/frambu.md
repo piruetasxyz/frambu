@@ -37,8 +37,9 @@ Generado a partir de `frambu-v-0-rev-a/frambu-v-0-rev-a.kicad_sch`. No confundir
 | U1 | 1 | RP2040 | Package_DFN_QFN:QFN-56-1EP_7x7mm_P0.4mm_EP3.2x3.2mm | *(sin código)* | Microcontrolador RP2040 |
 | U2 | 1 | AMS1117-5.0 | Package_TO_SOT_SMD:SOT-223-3_TabPin2 | C880752 | Regulador lineal (LDO) |
 | U3 | 1 | W25Q128JVS | frambu-v-0-rev-a:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL | C97521 | Memoria flash QSPI de 128 Mbit |
+| U4 | 1 | SGTL5000XNLA3 | Package_DFN_QFN:QFN-20-1EP_3x3mm_P0.4mm_EP1.65x1.65mm | *(sin código)* | Audio:SGTL5000XNLA3 |
 | Y1 | 1 | Crystal_GND24 | *(sin huella asignada)* | *(sin código)* | Cristal |
 
-34 componentes en total. Los ítems marcados *(sin huella asignada)* todavía no están completos en el esquemático — hay que completarlos antes de generar gerbers o comprar partes para esta revisión.
+35 componentes en total. Los ítems marcados *(sin huella asignada)* todavía no están completos en el esquemático — hay que completarlos antes de generar gerbers o comprar partes para esta revisión.
 
 <!-- BOM_TABLE_END -->
