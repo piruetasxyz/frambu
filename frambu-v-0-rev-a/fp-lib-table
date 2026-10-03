@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "frambu-v-0-rev-a") (type "KiCad") (uri "${KIPRJMOD}/bibliotecas/frambu-v-0-rev-a.pretty") (options "") (descr "biblioteca local generada con partes-jlcpcb/generar_biblioteca.py"))
+)

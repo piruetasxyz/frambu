@@ -152,7 +152,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/324e73a6-c0e5-4007-a017-2b54431432e9")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -310,7 +310,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/23226238-bd46-4175-9c9a-abb4ab8ab9ca")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -468,7 +468,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/ba8ab91a-2d6f-41ad-ae32-233aa2c84cb0")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -626,7 +626,7 @@
 		(property ki_fp_filters "Connector*:*_2x??_*")
 		(path "/6ad1b781-97be-4d79-a84a-b95a4b095a7e")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -1097,7 +1097,7 @@
 		(property ki_fp_filters "*QFN*7x7mm?P0.4mm?EP3.2x3.2mm*")
 		(path "/31ed3de7-9014-4b63-9edd-4e5691e1ef65")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -2037,7 +2037,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:KEY-SMD_L6.0-W3.5-LS8.7"
+	(footprint "frambu-v-0-rev-a:KEY-SMD_L6.0-W3.5-LS8.7"
 		(layer "F.Cu")
 		(uuid "2ad03292-9a51-49da-9c7a-96edc66d1612")
 		(at 82.23 44.935)
@@ -2112,7 +2112,7 @@
 		)
 		(path "/8c419168-6b3d-4131-ad41-1cef31d0bf52")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -2368,7 +2368,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/c19169ad-fd23-449e-8500-6697200f0e8a")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -2750,7 +2750,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
+	(footprint "frambu-v-0-rev-a:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
 		(layer "F.Cu")
 		(uuid "38c9b3b6-4e70-493e-934d-97fc179e0b09")
 		(at 72.15 70.835)
@@ -2826,7 +2826,7 @@
 		(property ki_fp_filters "*SOIC*5.3x5.3mm*P1.27mm*")
 		(path "/08cfa733-24e6-4c54-a27b-d13f283e2a61")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -3043,7 +3043,7 @@
 			(uuid "a2291f00-2c9e-46bc-8ba0-cae1ad2d9b2f")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/SOIC-8_L5.3-W5.3-H1.9-LS7.9-P1.27.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/SOIC-8_L5.3-W5.3-H1.9-LS7.9-P1.27.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3055,7 +3055,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:R0402"
+	(footprint "frambu-v-0-rev-a:R0402"
 		(layer "F.Cu")
 		(uuid "6ca7c8b2-9b36-4593-94b8-18964c2f354b")
 		(at 87.045 27.725)
@@ -3132,7 +3132,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/0c72e592-26f3-4a22-845e-0069451f6444")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -3280,7 +3280,7 @@
 			(uuid "c8bbe57e-1db3-4ab9-8aaf-51f89dd0eed0")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/R0402_L1.0-W0.5-H0.4.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/R0402_L1.0-W0.5-H0.4.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3292,7 +3292,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:C0402"
+	(footprint "frambu-v-0-rev-a:C0402"
 		(layer "F.Cu")
 		(uuid "765bd685-d777-42e3-a315-6cc14021d1c8")
 		(at 86.655 68.905)
@@ -3369,7 +3369,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/37e0d20c-b23f-4e15-be58-333e9e7a2f5a")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -3561,7 +3561,7 @@
 			(uuid "b12c6c7c-056d-4b83-bc0c-2dcacdf844f5")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/C0402_L1.0-W0.5-H0.5.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/C0402_L1.0-W0.5-H0.5.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3638,7 +3638,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/8f32adc6-3bf6-4be0-ae23-460f215bf73b")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -3796,7 +3796,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/0b4c54a6-0804-42c0-826a-47c124102fd8")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -3889,7 +3889,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:R0402"
+	(footprint "frambu-v-0-rev-a:R0402"
 		(layer "F.Cu")
 		(uuid "7fd7f599-0ac3-4482-a5db-72e29157965e")
 		(at 87.045 25.575)
@@ -3966,7 +3966,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/f1a01daa-222d-4b78-8dc2-df91446a2c85")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4114,7 +4114,7 @@
 			(uuid "67c0a124-c452-473b-bc3e-308f2cd474bc")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/R0402_L1.0-W0.5-H0.4.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/R0402_L1.0-W0.5-H0.4.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4126,7 +4126,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:C0402"
+	(footprint "frambu-v-0-rev-a:C0402"
 		(layer "F.Cu")
 		(uuid "823d788c-b192-4ed3-8049-fe5bb0c99b20")
 		(at 86.655 66.755)
@@ -4203,7 +4203,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/eb8b049c-606c-4df9-a3b6-ca3704b2d3e0")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4395,7 +4395,7 @@
 			(uuid "1a9d7414-6dd8-4037-811c-4d8822d34e9c")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/C0402_L1.0-W0.5-H0.5.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/C0402_L1.0-W0.5-H0.5.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4472,7 +4472,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/2d27ae65-97b5-44c0-a0a8-6335c9f83377")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4630,7 +4630,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/be875fa4-1a82-4d9b-a9f8-be3f4a90f2c7")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4788,7 +4788,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/2b986948-29f3-42be-8d81-259389b4fd0d")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -4951,7 +4951,7 @@
 		(property ki_fp_filters "SOT?223*TabPin2*")
 		(path "/ec64e493-7eb8-43ea-ac59-b3e431970f95")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -5231,7 +5231,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/7df57f7a-18a6-4b66-bc1d-612017304ab5")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -5324,7 +5324,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:USB-C_SMD-TYPE-C-31-M-12_1"
+	(footprint "frambu-v-0-rev-a:USB-C_SMD-TYPE-C-31-M-12_1"
 		(layer "F.Cu")
 		(uuid "9bab6bfc-cd59-4db2-816f-fd91a411e7ef")
 		(at 74.11 59.970088)
@@ -5400,7 +5400,7 @@
 		(property ki_fp_filters "USB*C*Receptacle*")
 		(path "/844da15d-f386-4752-9488-86f11a853565")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -5754,7 +5754,7 @@
 			(uuid "0cfacd01-e293-497b-884d-d905e5fbf422")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/USB-C_SMD-TYPE-C-31-M-12_1.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/USB-C_SMD-TYPE-C-31-M-12_1.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -5831,7 +5831,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/ce9b790b-738f-4e25-847d-afa09138bb1d")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -5924,7 +5924,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:C1206"
+	(footprint "frambu-v-0-rev-a:C1206"
 		(layer "F.Cu")
 		(uuid "ae7ac621-e497-49d3-880a-a4dae3c71d5f")
 		(at 87.515 52.305)
@@ -6001,7 +6001,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/3ff91c6e-0431-4867-ae8e-c1127f25261c")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -6193,7 +6193,7 @@
 			(uuid "8de068be-5bfb-4b74-a884-aaf49407a225")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/C1206_L3.2-W1.6-H1.3.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/C1206_L3.2-W1.6-H1.3.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6283,7 +6283,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/18d2be49-5a1e-4916-9a46-3a80634ed86c")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -6441,7 +6441,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/8fe53492-f2c5-4633-b3af-9fb82a2ecfa9")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -6534,7 +6534,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:R0402"
+	(footprint "frambu-v-0-rev-a:R0402"
 		(layer "F.Cu")
 		(uuid "cb753c53-f424-4fd7-82d2-242595a2a38f")
 		(at 87.045 29.875)
@@ -6611,7 +6611,7 @@
 		(property ki_fp_filters "R_*")
 		(path "/3283acc0-18d2-4762-a407-68a3995bf321")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -6759,7 +6759,7 @@
 			(uuid "310c0e09-61d9-42e2-89d0-ebab7f9a6619")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/R0402_L1.0-W0.5-H0.4.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/R0402_L1.0-W0.5-H0.4.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6836,7 +6836,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/a8c71d5d-575e-4af6-8544-cf6821b060c9")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -6929,7 +6929,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:C0402"
+	(footprint "frambu-v-0-rev-a:C0402"
 		(layer "F.Cu")
 		(uuid "d49d2b5f-8a20-4f57-a56a-47c275a80903")
 		(at 86.655 71.055)
@@ -7006,7 +7006,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/84006c1a-6700-40a7-88b7-00b959273515")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -7198,7 +7198,7 @@
 			(uuid "764f03de-2d2a-4efc-bfef-ec7f23ac939e")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/C0402_L1.0-W0.5-H0.5.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/C0402_L1.0-W0.5-H0.5.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7275,7 +7275,7 @@
 		(property ki_fp_filters "Connector*:*_2x??_*")
 		(path "/8520049c-a94b-4049-8f67-bac3bf54b5ca")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -7681,7 +7681,7 @@
 			)
 		)
 	)
-	(footprint "frambuesa-rev-a:C1206"
+	(footprint "frambu-v-0-rev-a:C1206"
 		(layer "F.Cu")
 		(uuid "e4f25430-f6bc-4470-9bcd-71429a624a47")
 		(at 87.515 48.975)
@@ -7758,7 +7758,7 @@
 		(property ki_fp_filters "C_*")
 		(path "/a544b30c-ae81-4f21-8143-1051be18a79b")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")
@@ -7950,7 +7950,7 @@
 			(uuid "1b35bebd-cdb9-4648-85b1-b428005f7299")
 		)
 		(embedded_fonts no)
-		(model "bibliotecas/frambuesa-rev-a.3dshapes/C1206_L3.2-W1.6-H1.3.wrl"
+		(model "bibliotecas/frambu-v-0-rev-a.3dshapes/C1206_L3.2-W1.6-H1.3.wrl"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -8027,7 +8027,7 @@
 		(property ki_fp_filters "MountingHole*")
 		(path "/29139214-abec-4ed7-b75f-e8fe2a572b85")
 		(sheetname "/")
-		(sheetfile "frambuesa-rev-a.kicad_sch")
+		(sheetfile "frambu-v-0-rev-a.kicad_sch")
 		(units
 			(unit
 				(name "A")

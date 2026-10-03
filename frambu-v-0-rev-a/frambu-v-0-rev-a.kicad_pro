@@ -488,7 +488,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "frambuesa-rev-a.kicad_pro",
+    "filename": "frambu-v-0-rev-a.kicad_pro",
     "version": 3
   },
   "net_settings": {
@@ -643,7 +643,7 @@
     "subpart_id_separator": 0,
     "top_level_sheets": [
       {
-        "filename": "frambuesa-rev-a.kicad_sch",
+        "filename": "frambu-v-0-rev-a.kicad_sch",
         "name": "Root",
         "uuid": "abe203a7-9d57-48b6-8b01-f2c6245f8096"
       }

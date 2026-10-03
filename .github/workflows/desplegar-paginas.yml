@@ -1,0 +1,63 @@
+name: Desplegar GitHub Pages
+
+# Construye el sitio con Jekyll (mismo comportamiento que el build clásico de
+# GitHub Pages) y lo despliega. Se dispara tanto en push directo a main como
+# al terminar "Actualizar capturas del esquemático y la placa", porque ese
+# workflow hace push con el GITHUB_TOKEN por defecto, y esos pushes no
+# disparan el evento "push" de otros workflows.
+on:
+  push:
+    branches:
+      - main
+  workflow_run:
+    workflows: ["Actualizar capturas del esquemático y la placa"]
+    types:
+      - completed
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: >-
+      github.repository == 'piruetasxyz/frambu' &&
+      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Pages
+        uses: actions/configure-pages@v5
+
+      - name: Construir con Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Subir artefacto de Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

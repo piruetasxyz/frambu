@@ -1,0 +1,80 @@
+name: Actualizar capturas del esquemático y la placa
+
+# Genera una captura SVG del esquemático y de la placa de la revisión activa,
+# y las deja en docs/images/. También regenera la tabla de Bill of materials
+# en docs/frambu.md (ver docs/generar_bom.py). Si se cambia la revisión
+# activa (por ejemplo v-0-rev-a -> v-0-rev-b), hay que actualizar las rutas de "paths"
+# abajo, la variable REVISION, y REVISION en docs/generar_bom.py.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "frambu-v-0-rev-a/*.kicad_sch"
+      - "frambu-v-0-rev-a/frambu-v-0-rev-a.kicad_pcb"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  capturas:
+    if: github.repository == 'piruetasxyz/frambu'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Generar capturas con kicad-cli
+        run: |
+          set -eu
+
+          REVISION="frambu-v-0-rev-a"
+          KICAD_IMG="kicad/kicad:10.0"
+          docker pull "$KICAD_IMG"
+          KICAD="docker run --rm --user $(id -u):$(id -g) -e HOME=/tmp -v ${PWD}:/work -w /work $KICAD_IMG kicad-cli"
+
+          mkdir -p docs/images
+          TMPDIR_REL="_captura_tmp"
+          rm -rf "$TMPDIR_REL"
+          mkdir -p "$TMPDIR_REL"
+
+          $KICAD sch export svg --output "$TMPDIR_REL" "$REVISION/$REVISION.kicad_sch"
+          svg="$(find "$TMPDIR_REL" -maxdepth 1 -name '*.svg' | head -n1)"
+          if [ -z "$svg" ]; then
+            echo "No se generó SVG del esquemático" >&2
+            exit 1
+          fi
+          mv "$svg" "docs/images/${REVISION}-esquematico.svg"
+
+          $KICAD pcb export svg \
+            --layers "F.Cu,F.Mask,F.Silkscreen,Edge.Cuts" \
+            --mode-single \
+            --output "docs/images/${REVISION}-placa.svg" \
+            "$REVISION/$REVISION.kicad_pcb"
+
+          rm -rf "$TMPDIR_REL"
+
+          # Reexportamos KICAD como KICAD_CLI para que generar_bom.py use el
+          # mismo kicad-cli en docker, en vez de buscarlo en el PATH del runner.
+          echo "KICAD_CLI=$KICAD" >> "$GITHUB_ENV"
+
+      - name: Actualizar Bill of materials en docs/
+        run: python3 docs/generar_bom.py
+
+      - name: Commit y push de las capturas y BOM si cambiaron
+        run: |
+          set -eu
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/images docs/frambu.md
+          if git diff --cached --quiet; then
+            echo "Sin cambios en las capturas ni la BOM."
+            exit 0
+          fi
+          git commit -m "actualizar capturas y BOM del esquemático y la placa [skip ci]"
+          git push

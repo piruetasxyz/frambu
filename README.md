@@ -1,8 +1,13 @@
-# frambuesa-pcb
+# frambu
 
 placa de desarrollo abierta basada en el microcontrolador **RP2040** de Raspberry Pi,
 diseñada en [KiCad](https://www.kicad.org/) para fabricarse y ensamblarse en
 [JLCPCB](https://jlcpcb.com/).
+
+la documentación, con capturas del esquemático, de la placa y la lista de
+materiales, está publicada en
+[piruetasxyz.github.io/frambu](https://piruetasxyz.github.io/frambu/) y en
+[`docs/frambu.md`](docs/frambu.md).
 
 este repositorio se usa para trabajo colaborativo y también como material de
 enseñanza: la idea es que cualquier persona pueda clonarlo, abrirlo, entender cómo
@@ -13,6 +18,7 @@ está hecho y modificarlo.
 - [estado del proyecto](#estado-del-proyecto)
 - [características de la placa](#características-de-la-placa)
 - [estructura del repositorio](#estructura-del-repositorio)
+- [automatizaciones (GitHub Actions)](#automatizaciones-github-actions)
 - [requisitos](#requisitos)
 - [cómo abrir el proyecto](#cómo-abrir-el-proyecto)
 - [biblioteca local de KiCad](#biblioteca-local-de-kicad)
@@ -30,7 +36,7 @@ fabricar.
 
 | revisión | carpeta | estado |
 | --- | --- | --- |
-| A | [`frambuesa-rev-a/`](frambuesa-rev-a/) | en diseño |
+| A | [`frambu-v-0-rev-a/`](frambu-v-0-rev-a/) | en diseño |
 
 ## características de la placa
 
@@ -53,25 +59,57 @@ que es la mejor referencia para entender por qué cada componente está ahí.
 ## estructura del repositorio
 
 ```text
-frambuesa-pcb/
+frambu/
 ├── README.md                     este archivo
 ├── LICENSE                       licencia MIT
 ├── .gitignore                    ignora archivos temporales y de respaldo de KiCad
-└── frambuesa-rev-a/              una carpeta por revisión de la placa
-    ├── frambuesa-rev-a.kicad_pro proyecto de KiCad (abrir este)
-    ├── frambuesa-rev-a.kicad_sch esquemático
-    ├── frambuesa-rev-a.kicad_pcb diseño de la placa (PCB)
+├── .github/workflows/            automatizaciones de GitHub Actions
+├── docs/
+│   ├── frambu.md              capturas y lista de materiales (BOM) de la placa
+│   ├── generar_bom.py            regenera la tabla de BOM en frambu.md
+│   └── images/                   capturas SVG generadas automáticamente
+└── frambu-v-0-rev-a/              una carpeta por revisión de la placa
+    ├── frambu-v-0-rev-a.kicad_pro proyecto de KiCad (abrir este)
+    ├── frambu-v-0-rev-a.kicad_sch esquemático
+    ├── frambu-v-0-rev-a.kicad_pcb diseño de la placa (PCB)
     ├── bom.csv                   lista de partes de JLCPCB, escrita a mano
     ├── sym-lib-table             registra la biblioteca local de símbolos
     ├── fp-lib-table              registra la biblioteca local de huellas
     └── bibliotecas/              biblioteca local generada desde bom.csv
-        ├── frambuesa-rev-a.kicad_sym   símbolos
-        ├── frambuesa-rev-a.pretty/     huellas (footprints)
-        └── frambuesa-rev-a.3dshapes/   modelos 3D (.step y .wrl)
+        ├── frambu-v-0-rev-a.kicad_sym   símbolos
+        ├── frambu-v-0-rev-a.pretty/     huellas (footprints)
+        └── frambu-v-0-rev-a.3dshapes/   modelos 3D (.step y .wrl)
 ```
 
 cada revisión vive en su propia carpeta para poder comparar versiones y no perder
 el diseño de una placa ya fabricada.
+
+## automatizaciones (GitHub Actions)
+
+hay dos workflows en [`.github/workflows/`](.github/workflows/):
+
+- [`actualizar-capturas.yml`](.github/workflows/actualizar-capturas.yml): cada
+  vez que se hace push a `main` con cambios en el esquemático o la placa de la
+  revisión activa, usa `kicad-cli` (KiCad 10, en docker) para exportar
+  `docs/images/frambu-v-0-rev-a-esquematico.svg` y
+  `docs/images/frambu-v-0-rev-a-placa.svg`, regenera la tabla de BOM en
+  `docs/frambu.md` con `docs/generar_bom.py`, y hace commit de los cambios.
+- [`desplegar-paginas.yml`](.github/workflows/desplegar-paginas.yml): construye
+  el sitio con Jekyll y lo publica en GitHub Pages, tanto en cada push a `main`
+  como al terminar el workflow anterior.
+
+como el primer workflow hace commits, **conviene hacer `git pull` después de
+cada push** que toque el esquemático o la placa.
+
+la tabla de BOM también se puede regenerar a mano, con KiCad 10 instalado:
+
+```bash
+python3 docs/generar_bom.py
+```
+
+si se agrega una revisión nueva (por ejemplo `frambu-v-0-rev-b/`), hay que
+actualizar las rutas en `actualizar-capturas.yml` y `REVISION` en
+`docs/generar_bom.py`.
 
 ## requisitos
 
@@ -84,12 +122,12 @@ el diseño de una placa ya fabricada.
 ## cómo abrir el proyecto
 
 ```bash
-git clone https://github.com/piruetasxyz/frambuesa-pcb.git
-cd frambuesa-pcb
+git clone https://github.com/piruetasxyz/frambu.git
+cd frambu
 ```
 
 luego, en KiCad: **Archivo → Abrir proyecto** y elegir
-`frambuesa-rev-a/frambuesa-rev-a.kicad_pro`. desde ahí se abren el esquemático y
+`frambu-v-0-rev-a/frambu-v-0-rev-a.kicad_pro`. desde ahí se abren el esquemático y
 la placa.
 
 no hace falta configurar nada más: los archivos `sym-lib-table` y `fp-lib-table`
@@ -100,7 +138,7 @@ sin importar dónde se clone el repositorio.
 ## biblioteca local de KiCad
 
 las partes que usamos de JLCPCB se listan en `bom.csv` dentro de cada revisión
-(por ejemplo `frambuesa-rev-a/bom.csv`). tiene las mismas columnas que el
+(por ejemplo `frambu-v-0-rev-a/bom.csv`). tiene las mismas columnas que el
 inventario de [partes-jlcpcb](https://github.com/piruetasxyz/partes-jlcpcb):
 
 | columna | significado |
@@ -116,8 +154,8 @@ a partir de ese archivo se genera la biblioteca local (símbolos, huellas y
 modelos 3D):
 
 ```bash
-cd frambuesa-rev-a
-python3 /ruta/a/partes-jlcpcb/generar_biblioteca.py --bom bom.csv --output bibliotecas/frambuesa-rev-a
+cd frambu-v-0-rev-a
+python3 /ruta/a/partes-jlcpcb/generar_biblioteca.py --bom bom.csv --output bibliotecas/frambu-v-0-rev-a
 ```
 
 ajusta `/ruta/a/partes-jlcpcb` a donde tengas clonado ese repositorio. requiere
@@ -131,7 +169,7 @@ su entorno virtual activado (ver su README).
    cada tipo de parte.
 2. agregar una fila a `bom.csv`.
 3. regenerar la biblioteca con el comando de arriba.
-4. en el esquemático, usar el símbolo de la biblioteca `frambuesa-rev-a` o
+4. en el esquemático, usar el símbolo de la biblioteca `frambu-v-0-rev-a` o
    asignar la huella nueva al símbolo existente, y llenar su campo `LCSC` con el
    código de la parte.
 5. hacer commit de `bom.csv` **y** de los archivos nuevos en `bibliotecas/`

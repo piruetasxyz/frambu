@@ -21,7 +21,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:USB-C_SMD-TYPE-C-31-M-12_1"
+      "frambu-v-0-rev-a:USB-C_SMD-TYPE-C-31-M-12_1"
       (id 2)
       (at 0 -21.59 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -186,7 +186,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:R0805"
+      "frambu-v-0-rev-a:R0805"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -274,7 +274,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:LQFN-56_L7.0-W7.0-P0.4-EP"
+      "frambu-v-0-rev-a:LQFN-56_L7.0-W7.0-P0.4-EP"
       (id 2)
       (at 0 -58.42 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -693,7 +693,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:R0402"
+      "frambu-v-0-rev-a:R0402"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -781,7 +781,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:KEY-SMD_L6.0-W3.5-LS8.7"
+      "frambu-v-0-rev-a:KEY-SMD_L6.0-W3.5-LS8.7"
       (id 2)
       (at 0 -8.89 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -889,7 +889,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:R0805"
+      "frambu-v-0-rev-a:R0805"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -970,7 +970,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:CAP-SMD_BD4.0-L4.3-W4.3-LS5.0-FD"
+      "frambu-v-0-rev-a:CAP-SMD_BD4.0-L4.3-W4.3-LS5.0-FD"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1094,7 +1094,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:CAP-SMD_BD6.3-L6.6-W6.6-LS7.3-FD-H7.7"
+      "frambu-v-0-rev-a:CAP-SMD_BD6.3-L6.6-W6.6-LS7.3-FD-H7.7"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1204,7 +1204,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:C0805"
+      "frambu-v-0-rev-a:C0805"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1314,7 +1314,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:C0805"
+      "frambu-v-0-rev-a:C0805"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1424,7 +1424,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
+      "frambu-v-0-rev-a:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
       (id 2)
       (at 0 -11.43 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1553,7 +1553,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:R0402"
+      "frambu-v-0-rev-a:R0402"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1641,7 +1641,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:C1206"
+      "frambu-v-0-rev-a:C1206"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1751,7 +1751,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:C0402"
+      "frambu-v-0-rev-a:C0402"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1861,7 +1861,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:R0402"
+      "frambu-v-0-rev-a:R0402"
       (id 2)
       (at 0 -7.62 0)
       (effects (font (size 1.27 1.27) ) hide)
@@ -1949,7 +1949,7 @@
     )
     (property
       "Footprint"
-      "frambuesa-rev-a:SOT-89-3_L4.5-W2.5-P1.50-LS4.2-BR"
+      "frambu-v-0-rev-a:SOT-89-3_L4.5-W2.5-P1.50-LS4.2-BR"
       (id 2)
       (at 0 -10.16 0)
       (effects (font (size 1.27 1.27) ) hide)
