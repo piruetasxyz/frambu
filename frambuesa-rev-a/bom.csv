@@ -10,3 +10,8 @@ Capacitors,100nF,0805,C49678,100nF 50V X7R ±10% 0805 Multilayer Ceramic Capacit
 Capacitors,1uF,0805,C77083,1uF 50V X7R ±10% 0805 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS,206
 Capacitors,10uF,"SMD,D4xL5.4mm",C3357,"-55℃~+105℃ 10uF 16V 2000hrs@105℃ 4mm 5.4mm ±20% SMD,D4xL5.4mm Aluminum Electrolytic Capacitors - SMD ROHS",1962
 Capacitors,100uF,"SMD,D6.3xL7.7mm",C46550415,"-55℃~+105℃ 100uF 2000hrs@105℃ 50V 6.3mm 140mA@120Hz 7.7mm ±20% SMD,D6.3xL7.7mm Aluminum Electrolytic Capacitors - SMD ROHS",300
+Resistors,1kΩ,0402,C11702,-55℃~+155℃ 1kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS,
+Resistors,10kΩ,0402,C25744,-55℃~+155℃ 10kΩ 50V 62.5mW Thick Film Resistor ±1% ±100ppm/℃ 0402 Chip Resistor - Surface Mount ROHS,
+Capacitors,10uF,0402,C15525,10uF 6.3V X5R ±20% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS,
+Capacitors,100uF,1206,C15008,100uF 6.3V X5R ±20% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS,
+Power Management (PMIC),AMS1117-3.3,SOT-89-3,C880752,-40℃~+125℃@(Tj) 1.3V@(800mA) 18V 3.3V 3mA 70dB@(120Hz) 800mA Positive SOT-89-3 Voltage Regulators - Linear Low Drop Out (LDO) ROHS,

@@ -9234,7 +9234,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_SO:SOIC-8_5.3x5.3mm_P1.27mm"
+		(property "Footprint" "frambuesa-rev-a:SOIC-8_L5.3-W5.3-P1.27-LS8.0-BL"
 			(at 69.85 288.29 0)
 			(hide yes)
 			(show_name no)
@@ -9425,7 +9425,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:R0402"
 			(at 84.582 239.395 90)
 			(hide yes)
 			(show_name no)
@@ -10591,7 +10591,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:R0402"
 			(at 75.057 239.395 90)
 			(hide yes)
 			(show_name no)
@@ -10762,7 +10762,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:C0402"
 			(at 175.5902 236.855 0)
 			(hide yes)
 			(show_name no)
@@ -11087,7 +11087,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:C1206"
 			(at 160.3502 236.855 0)
 			(hide yes)
 			(show_name no)
@@ -12216,7 +12216,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:C0402"
 			(at 82.2452 290.83 0)
 			(hide yes)
 			(show_name no)
@@ -12305,7 +12305,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:USB-C_SMD-TYPE-C-31-M-12_1"
 			(at 36.83 241.3 0)
 			(hide yes)
 			(show_name no)
@@ -12775,7 +12775,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:KEY-SMD_L6.0-W3.5-LS8.7"
 			(at 27.94 303.53 0)
 			(hide yes)
 			(show_name no)
@@ -13345,7 +13345,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:C1206"
 			(at 107.6452 237.49 0)
 			(hide yes)
 			(show_name no)
@@ -14660,7 +14660,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:C0402"
 			(at 122.8852 237.49 0)
 			(hide yes)
 			(show_name no)
@@ -14921,7 +14921,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "frambuesa-rev-a:R0402"
 			(at 49.022 290.195 90)
 			(hide yes)
 			(show_name no)
