@@ -30,9 +30,9 @@ está hecho y modificarlo.
 
 ## estado del proyecto
 
-**revisión A, en diseño.** el esquemático está avanzado y la placa tiene los
-componentes ubicados, pero todavía no tiene pistas ruteadas. no está lista para
-fabricar.
+**revisión A, en diseño.** el esquemático está avanzado y la placa se está
+rehaciendo desde cero: por ahora no tiene contorno, componentes ni pistas. no
+está lista para fabricar.
 
 | revisión | carpeta | estado |
 | --- | --- | --- |
@@ -42,15 +42,17 @@ fabricar.
 
 | bloque | componente | notas |
 | --- | --- | --- |
-| microcontrolador | RP2040 (U1), LQFN-56 7×7 mm | doble núcleo ARM Cortex-M0+, hasta 133 MHz |
-| memoria flash | W25Q128JVS (U3), SOIC-8 | 128 Mbit (16 MB), conectada por QSPI |
-| reloj | cristal Y1 + condensadores de 15 pF (C16, C17) | señales `XIN` / `XOUT` |
-| USB | conector USB-C 16 pines (J5) | USB 2.0; resistencias de 5,1 kΩ en CC1/CC2 (R6, R7) para que el cable entregue 5 V; resistencias en serie de 27,4 Ω en `USB_D+`/`USB_D-` (R1, R2) |
-| alimentación | regulador lineal AMS1117 (U2) | de `VBUS` (5 V del USB) a `+3V3`; el RP2040 genera internamente `+1V1` para su núcleo |
+| microcontrolador | RP2040 (U2), LQFN-56 7×7 mm | doble núcleo ARM Cortex-M0+, hasta 133 MHz |
+| memoria flash | W25Q128JVS (U1), SOIC-8 | 128 Mbit (16 MB), conectada por QSPI |
+| reloj | cristal Y1 de 12 MHz (ABM8-272-T3) + condensadores de 15 pF (C1, C2) | señales `XIN` / `XOUT` |
+| USB | conector USB-C 16 pines (J1) | USB 2.0; resistencias de 5,1 kΩ en CC1/CC2 (R3, R4) para que el cable entregue 5 V; resistencias en serie de 27 Ω en `USB_D+`/`USB_D-` (R6, R7) |
+| alimentación | regulador lineal AMS1117 (U3) | de `VBUS` (5 V del USB) a `+3V3`; el RP2040 genera internamente `+1V1` para su núcleo |
 | botón | SW1 (PTS636) | botón de arranque (BOOTSEL), en la línea `QSPI_SS` |
-| pines | J3 y J4, conectores hembra de 2,54 mm | exponen `GPIO00`–`GPIO29` (`GPIO26`–`GPIO29` también son entradas analógicas `ADC0`–`ADC3`), más `RUN`, `SWCLK` y `SWD` para depuración |
-| fijación | H1–H4 | agujeros para tornillos M3 |
-| placa | 50 × 60 mm, 2 capas de cobre (`F.Cu`, `B.Cu`) | |
+| pines | J2 y J5, conectores hembra 1×20 de 2,54 mm | mismo pinout que la Raspberry Pi Pico: J2 son los pines 1–20 y J5 los pines 40–21 (el pin 1 de J5 es `VBUS`, así ambos conectores tienen el pin 1 en el mismo extremo). `VSYS` y `3V3_EN` quedan sin conexión |
+| depuración | J3, conector macho 1×3 de 2,54 mm | `SWCLK`, `GND`, `SWD`, en el mismo orden que la Pico |
+| GPIO extra | J4, conector hembra 1×4 de 2,54 mm | `GPIO23`, `GPIO24`, `GPIO25` y `GPIO29_ADC3`, que la Pico no expone |
+| fijación | H1, H2 | agujeros para tornillos M3 |
+| placa | 2 capas de cobre (`F.Cu`, `B.Cu`) | tamaño por definir: se está rehaciendo desde cero |
 
 el diseño sigue de cerca la guía oficial
 [Hardware design with RP2040](https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf),
@@ -217,16 +219,19 @@ cerrado.
 
 revisión A, a la fecha de este documento:
 
-- la placa no tiene pistas ruteadas todavía (sí tiene una zona de cobre).
-- el símbolo de U2 en el esquemático es `AMS1117-5.0` con huella SOT-223, pero
-  `bom.csv` y su código LCSC (`C880752`) corresponden a un `AMS1117-3.3` en
-  SOT-89-3. hay que alinearlos: la placa necesita **3,3 V**.
-- R3 tiene el código LCSC `C11702` (resistencia 0402) pero huella 0805.
-- R1, R2 (27,4 Ω), C16, C17 (15 pF) y Y1 (cristal) no tienen huella ni código
-  LCSC asignado.
-- J3 y J4 usan el símbolo de 2×18 pines pero la huella de 1×20 pines.
-- varios condensadores 0805 (C1–C11) aún no tienen código LCSC en el
-  esquemático, aunque sus partes ya están en `bom.csv`.
+- la placa está vacía: falta dibujar el contorno en `Edge.Cuts` (antes era de
+  50 × 60 mm), traer las huellas desde el esquemático (`F8`), ubicarlas y rutear.
+- varias partes del esquemático no están en el inventario de
+  [`partes-jlcpcb`](https://github.com/piruetasxyz/partes-jlcpcb), solo en su
+  lista de deseos: U3 (`C880752`), R2 (`C25744`), C3, C7, C18 (`C15525`),
+  R6, R7 (`C25100`), C1, C2 (`C1548`), Y1 (`C20625731`) y los condensadores de
+  100 nF C5, C8–C12, C15, C16, C19 (`C307331`).
+- al ubicar J2 y J5, sus pines 1 van en el mismo extremo de la placa, separados
+  por 17,78 mm (7 × 2,54 mm) como en la Pico, para que sea compatible con sus
+  accesorios.
+- `VSYS` (pin 39 de la Pico) queda sin conexión. para alimentar la placa por ahí,
+  como en la Pico, falta un diodo Schottky de `VBUS` a `VSYS` y alimentar U3
+  desde `VSYS`.
 
 ## glosario
 
