@@ -4603,16 +4603,6 @@
 		)
 		(uuid "2f0f3815-6c7b-46bd-99a9-0b20bd36b828")
 	)
-	(text "cristal TODO\n\n "
-		(exclude_from_sim no)
-		(at 41.275 350.52 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "4861f88a-8693-465e-aa78-27f83e9e7f31")
-	)
 	(text "boot"
 		(exclude_from_sim no)
 		(at 28.575 307.34 0)

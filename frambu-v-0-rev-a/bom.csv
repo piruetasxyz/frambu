@@ -16,3 +16,5 @@ Capacitors,10uF,0402,C15525,10uF 6.3V X5R ±20% 0402 Multilayer Ceramic Capacito
 Capacitors,100uF,1206,C15008,100uF 6.3V X5R ±20% 1206 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS,
 Power Management (PMIC),AMS1117-3.3,SOT-89-3,C880752,-40℃~+125℃@(Tj) 1.3V@(800mA) 18V 3.3V 3mA 70dB@(120Hz) 800mA Positive SOT-89-3 Voltage Regulators - Linear Low Drop Out (LDO) ROHS,
 Capacitors,100nF,0402,C307331,100nF 50V X7R ±10% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS,
+Capacitors,15pF,0402,C1548,15pF 50V C0G ±5% 0402 Multilayer Ceramic Capacitors MLCC - SMD/SMT ROHS,
+Crystals,12MHz,SMD3225-4P,C20625731,12MHz ±30ppm 10pF 50Ω -40℃~+85℃ SMD3225-4P Crystals ROHS,
