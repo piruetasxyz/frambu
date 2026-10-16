@@ -27,7 +27,6 @@ Generado a partir de `frambu-v-0-rev-a/frambu-v-0-rev-a.kicad_sch`. No confundir
 | J1 | 1 | USB_C_Receptacle_USB2.0_16P | Connector_USB:USB_C_Receptacle_HRO_TYPE-C-31-M-12 | C165948 | Conector USB-C |
 | J2 | 1 | pico_pines_1-20 | Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical | *(sin código)* | Connector_Generic:Conn_01x20 |
 | J3 | 1 | SWD | Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical | *(sin código)* | Connector_Generic:Conn_01x03 |
-| J4 | 1 | GPIO_extra | Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical | *(sin código)* | Connector_Generic:Conn_01x04 |
 | J5 | 1 | pico_pines_40-21 | Connector_PinSocket_2.54mm:PinSocket_1x20_P2.54mm_Vertical | *(sin código)* | Connector_Generic:Conn_01x20 |
 | R1, R5 | 2 | 1k | Resistor_SMD:R_0805_2012Metric | C2907232 | Resistencia |
 | R2 | 1 | 10k | frambu-v-0-rev-a:R0402 | C25744 | Resistencia |
@@ -39,6 +38,6 @@ Generado a partir de `frambu-v-0-rev-a/frambu-v-0-rev-a.kicad_sch`. No confundir
 | U3 | 1 | AMS1117-3.3 | frambu-v-0-rev-a:SOT-89-3_L4.5-W2.5-P1.50-LS4.2-BR | C880752 | Regulador lineal (LDO) de 3,3 V |
 | Y1 | 1 | 12MHz | Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm | C20625731 | Cristal |
 
-33 componentes en total.
+32 componentes en total.
 
 <!-- BOM_TABLE_END -->
