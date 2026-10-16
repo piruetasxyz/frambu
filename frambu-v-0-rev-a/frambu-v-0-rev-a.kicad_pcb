@@ -10876,12 +10876,28 @@
 		(uuid "fe49c4b9-5c2e-4420-be11-2b126633b31d")
 	)
 	(segment
+		(start 41.1 41.08)
+		(end 40.32726 41.287055)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "07b7ca26-0780-44c3-9813-9160e7ddca13")
+	)
+	(segment
 		(start 31.5 64.5)
 		(end 33.5 64.5)
 		(width 0.2)
 		(layer "F.Cu")
 		(net "GND")
 		(uuid "2715698b-acb3-473c-ba1c-121718650914")
+	)
+	(segment
+		(start 35.75 59.17)
+		(end 35.542945 59.94274)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "2bce6257-36a4-4190-a32e-4383557acb4a")
 	)
 	(segment
 		(start 45.5 34)
@@ -10898,6 +10914,14 @@
 		(layer "F.Cu")
 		(net "GND")
 		(uuid "498e9d5a-1bee-4bd8-ac0f-78b43bb58b94")
+	)
+	(segment
+		(start 46.67 46.25)
+		(end 47.47 46.25)
+		(width 0.25)
+		(layer "F.Cu")
+		(net "GND")
+		(uuid "4a84dae0-0505-415e-8ea6-b9e8582d5ccd")
 	)
 	(segment
 		(start 43.25 28.045)
@@ -10980,6 +11004,14 @@
 		(uuid "38cd7487-f885-4c65-b793-e4d669e2b8ac")
 	)
 	(via
+		(at 40.32726 41.287055)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "3c5497a0-d590-4665-a6bb-afd4d395f7fd")
+	)
+	(via
 		(at 56.296359 42.617429)
 		(size 0.6)
 		(drill 0.3)
@@ -10994,6 +11026,14 @@
 		(layers "F.Cu" "B.Cu")
 		(net "GND")
 		(uuid "47266755-b5e4-4a7d-af83-75c526284b90")
+	)
+	(via
+		(at 47.47 46.25)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "48056a51-ae28-418e-8bd3-3308ce770076")
 	)
 	(via
 		(at 26.129409 45.365859)
@@ -11090,6 +11130,14 @@
 		(layers "F.Cu" "B.Cu")
 		(net "GND")
 		(uuid "ecce5b86-e3ea-415e-bda2-f651dee0e5a7")
+	)
+	(via
+		(at 35.542945 59.94274)
+		(size 0.6)
+		(drill 0.3)
+		(layers "F.Cu" "B.Cu")
+		(net "GND")
+		(uuid "fa3de3c5-d999-4f87-8f06-9cfcf93761b0")
 	)
 	(segment
 		(start 47 35.5)
@@ -11266,14 +11314,6 @@
 		(layers "F.Cu" "B.Cu")
 		(net "+1V1")
 		(uuid "58ac8e71-6b72-4a6d-a5f4-dad793a736df")
-	)
-	(via
-		(at 40.5 43.25)
-		(size 0.6)
-		(drill 0.3)
-		(layers "F.Cu" "B.Cu")
-		(net "+1V1")
-		(uuid "78afa07f-761a-4573-9967-5d5ac21a3aaf")
 	)
 	(via
 		(at 41.832108 44.832108)
@@ -12506,14 +12546,6 @@
 		(layer "B.Cu")
 		(net "/GPIO03")
 		(uuid "a0a708d5-130a-4b44-9b1b-1c0e41d92848")
-	)
-	(segment
-		(start 23.263766 37.536234)
-		(end 23.127533 37.4)
-		(width 0.2)
-		(layer "B.Cu")
-		(net "/GPIO03")
-		(uuid "a76722b0-991b-4619-abd9-07503cb08787")
 	)
 	(segment
 		(start 23.3 39.036234)
