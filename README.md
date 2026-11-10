@@ -24,6 +24,7 @@ está hecho y modificarlo.
 - [biblioteca local de KiCad](#biblioteca-local-de-kicad)
 - [cómo trabajar en conjunto](#cómo-trabajar-en-conjunto)
 - [pendientes conocidos](#pendientes-conocidos)
+- [comentarios de revisión (2026-11-10)](#comentarios-de-revisión-2026-11-10)
 - [glosario](#glosario)
 - [recursos para aprender](#recursos-para-aprender)
 - [licencia](#licencia)
@@ -232,6 +233,58 @@ revisión A, a la fecha de este documento:
 - `VSYS` (pin 39 de la Pico) queda sin conexión. para alimentar la placa por ahí,
   como en la Pico, falta un diodo Schottky de `VBUS` a `VSYS` y alimentar U3
   desde `VSYS`.
+
+## comentarios de revisión (2026-11-10)
+
+notas de la revisión de hoy, para que alguien más las revise antes de mandar a
+fabricar.
+
+### cambios hechos
+
+- **anillos anulares:** tres vías de `GND` medían 0,45 mm con taladro de 0,3 mm
+  (anillo de 0,075 mm, el mínimo es 0,1 mm). se agrandaron a 0,6 mm, como el
+  resto de las vías. después se corrigieron a mano los problemas de margen que
+  eso generó.
+- **C16** (100 nF, desacople de `+3V3`) estaba en el esquemático pero no en la
+  placa; ya está ubicado y ruteado.
+- **GPIO23, GPIO24, GPIO25 y GPIO29_ADC3** del RP2040 ahora están marcados como
+  sin conexión (`X`) en el esquemático, y sus pads en la placa coinciden. en la
+  Pico esos pines se usan internamente y no salen a los conectores. se prefirió
+  dejarlos sin conexión en vez de llevarlos a `GND`, porque si el firmware los
+  configura como salida en alto quedarían en corto.
+- **archivos de fabricación:** nuevo script
+  [`docs/generar_fabricacion.py`](docs/generar_fabricacion.py), que genera con
+  `kicad-cli` las mismas carpetas que se usaron en
+  [tacto48](https://github.com/piruetasxyz/tacto48):
+  - [`frambu-v-0-rev-a-fab/`](frambu-v-0-rev-a-fab/): gerbers, taladros (PTH y
+    NPTH), `gbrjob` y `frambu-v-0-rev-a-gerb.zip`, que es lo que se sube a
+    JLCPCB como "Gerber file".
+  - [`frambu-v-0-rev-a-pcba/`](frambu-v-0-rev-a-pcba/): `bom.csv` y `cpl.csv`
+    para "PCB Assembly". entran todas las partes con el campo `LCSC` lleno en el
+    esquemático; J2, J3 y J5 (conectores de 2,54 mm) quedan fuera y se sueldan
+    a mano.
+  - se regeneran con `python3 docs/generar_fabricacion.py` (requiere KiCad 10).
+  - el `.gitignore` ahora deja pasar `*-pcba/*.csv`.
+
+estado al cerrar la revisión: el DRC no tiene errores ni conexiones pendientes,
+la placa coincide con el esquemático, y el ERC no tiene errores ni avisos. solo
+quedan 19 avisos de serigrafía recortada por la máscara (los círculos de pin 1
+de los condensadores y resistencias 0402), que no afectan la fabricación.
+
+### por revisar
+
+- [ ] **J1 (USB-C) en la vista previa de JLCPCB:** el origen de la huella de
+  KiCad está corrido 1,5 mm respecto al centro de sus pads, así que JLCPCB
+  podría mostrarlo desplazado. corregir en el `cpl.csv` si hace falta.
+- [ ] **rotación de U2 (RP2040) e Y1 (cristal):** usan huellas de la biblioteca
+  estándar de KiCad, que a veces no coinciden en rotación con JLCPCB. revisar
+  que el punto del pin 1 calce.
+- [ ] el resto de las piezas usa huellas generadas desde EasyEDA, que en general
+  ya calzan con JLCPCB, pero conviene mirarlas igual.
+- [ ] **este README está desactualizado** en varias partes: dice que la placa
+  está vacía y que "no está lista para fabricar", menciona un conector J4 con
+  GPIO23–25 y GPIO29 (no existe, y esos pines ahora están sin conexión) y
+  agujeros M3 H1 y H2 (no están en la placa).
 
 ## glosario
 

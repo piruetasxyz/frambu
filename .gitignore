@@ -34,6 +34,9 @@ fp-info-cache
 ## con partes-jlcpcb/generar_biblioteca.py (no son exportados por KiCad)
 !bom.csv
 !**/bom.csv
+## excepto los csv de las carpetas pcba (bom y cpl para ensamblar en JLCPCB),
+## generados con docs/generar_fabricacion.py
+!**/*-pcba/*.csv
 ## Archived Backups (KiCad 6.0)
 **/*-backups/*.zip
 ## Local git-based history (KiCad 9.0+)
