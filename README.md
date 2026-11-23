@@ -17,6 +17,7 @@ está hecho y modificarlo.
 
 - [estado del proyecto](#estado-del-proyecto)
 - [características de la placa](#características-de-la-placa)
+- [cómo usar frambu](#cómo-usar-frambu)
 - [estructura del repositorio](#estructura-del-repositorio)
 - [automatizaciones (GitHub Actions)](#automatizaciones-github-actions)
 - [requisitos](#requisitos)
@@ -58,6 +59,357 @@ está lista para fabricar.
 el diseño sigue de cerca la guía oficial
 [Hardware design with RP2040](https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf),
 que es la mejor referencia para entender por qué cada componente está ahí.
+
+## cómo usar frambu
+
+guía práctica para cargarle programas a **Frambu**. está escrita a partir de la primera prueba real de la placa en macOS, con Arduino IDE 2.3 y MicroPython, incluyendo los errores que aparecieron y cómo se resolvieron.
+
+### 1. qué es frambu
+
+Frambu usa el mismo chip y el mismo pinout que la **Raspberry Pi Pico**. Casi todo lo que funciona en una Pico funciona aquí, con algunas diferencias que se explican abajo.
+
+| Bloque | Componente | Notas |
+|---|---|---|
+| Microcontrolador | RP2040 | Doble núcleo ARM Cortex-M0+, hasta 133 MHz |
+| Flash | W25Q128JVS | 16 MB; la Pico trae 2 MB |
+| Reloj | Cristal de 12 MHz | |
+| USB | Conector USB-C | Alimentación y datos |
+| Regulador | AMS1117 | 5 V del USB a 3,3 V |
+| Botón | BOOTSEL (SW1) | No hay botón de reset |
+| Depuración | J3: SWCLK, GND, SWD | Mismo orden que la Pico |
+| Pines | J2 (pines 1–20) y J5 (pines 21–40) | Pinout de la Pico, headers hembra |
+
+#### diferencias con la Pico
+
+- **No tiene LED.** En la Pico el LED integrado está en GPIO25, pero en Frambu ese pin no está conectado. Los ejemplos "Blink" corren sin que se vea nada.
+- **GPIO23, GPIO24, GPIO25 y GPIO29 (ADC3) no salen a ningún pin.** No los uses.
+- **Solo se alimenta por USB-C.** VSYS y 3V3_EN no están conectados, así que no puedes alimentarla con una batería por VSYS como en la Pico.
+- **No hay botón de reset.** Para reiniciar la placa, desconecta y vuelve a conectar el cable.
+
+### 2. lo que necesitas
+
+- Un **cable USB-C que transmita datos**. Muchos cables solo cargan, y con ellos el computador no detecta la placa. Es la falla más común.
+- Para las pruebas con LED: un LED, una resistencia de 220 a 1 kΩ (330 Ω está bien), una protoboard y dos cables jumper macho-macho.
+- Una de estas dos opciones:
+  - [Thonny](https://thonny.org) para programar en MicroPython.
+  - [Arduino IDE 2](https://www.arduino.cc/en/software) para programar en C++ con Arduino.
+
+### 3. el modo BOOTSEL: cómo se carga cualquier programa
+
+El RP2040 tiene un cargador en su memoria interna. Cuando entra en **modo BOOTSEL**, el computador lo ve como un pendrive llamado **`RPI-RP2`**. Para cargar un programa basta con copiar un archivo **`.uf2`** a esa unidad: la placa lo graba, se reinicia sola y empieza a correrlo.
+
+**Para entrar en modo BOOTSEL:**
+
+1. Desconecta el cable USB.
+2. Mantén apretado el botón **BOOTSEL**.
+3. Conecta el cable, espera unos 2 segundos y suelta el botón.
+4. Debería aparecer la unidad **`RPI-RP2`** en el Finder.
+
+La primera vez no hace falta apretar nada: con la flash vacía, la placa entra sola en este modo.
+
+**Para confirmar que la unidad está montada**, abre la Terminal y escribe:
+
+```bash
+ls /Volumes
+```
+
+En la lista tiene que salir `RPI-RP2`.
+
+<!-- PANTALLAZO PENDIENTE: docs/img/finder-rpi-rp2.png — Finder mostrando la unidad RPI-RP2 en la barra lateral -->
+
+Cuando copias el `.uf2`, la unidad desaparece y macOS puede avisar que el disco "no se expulsó correctamente". Es normal y no pasa nada.
+
+### 4. opción A: MicroPython (la más simple)
+
+MicroPython fue lo primero que funcionó en Frambu, y es la mejor forma de comprobar que la placa está bien.
+
+#### 4.1 instalar MicroPython
+
+1. Descarga el firmware para la **Raspberry Pi Pico** (no la versión W). La versión estable más reciente al momento de escribir esto es la 1.29.0:
+   <https://micropython.org/resources/firmware/RPI_PICO-20260824-v1.29.0.uf2>
+   Si quieres revisar si hay versiones más nuevas: <https://micropython.org/download/RPI_PICO/>
+2. Pon la placa en **modo BOOTSEL** (sección 3).
+3. Arrastra el `.uf2` a la unidad `RPI-RP2`.
+4. Revisa que apareció el puerto serie de la placa:
+   ```bash
+   ls /dev/cu.*
+   ```
+   Tiene que aparecer un **`/dev/cu.usbmodem…`** nuevo.
+
+Si tienes otras placas conectadas, como una XIAO, pueden usar el mismo nombre de puerto. Para estar seguro, desconecta Frambu y revisa si ese puerto desaparece.
+
+#### 4.2 probar desde la Terminal
+
+```bash
+screen /dev/cu.usbmodem1101 115200
+```
+
+Cambia `1101` por el número de tu puerto. Aprieta **Enter** y debería aparecer el prompt `>>>`. Prueba con:
+
+```python
+import machine
+machine.freq()
+```
+
+Debería responder la frecuencia del CPU en Hz, por ejemplo `125000000` (125 MHz).
+
+Para salir de `screen`: **Ctrl+A**, luego **K**, y confirma con **y**.
+
+#### 4.3 programar con Thonny
+
+1. Instala [Thonny](https://thonny.org).
+2. Abajo a la derecha, elige el intérprete **MicroPython (Raspberry Pi Pico)**.
+3. Escribe tu código y aprieta **Run**.
+
+<!-- PANTALLAZO PENDIENTE: docs/img/thonny-interprete.png — Thonny con el intérprete MicroPython (Raspberry Pi Pico) seleccionado y el prompt >>> -->
+
+Este ejemplo hace parpadear un LED externo en GP15 (ver el cableado en la sección 6):
+
+```python
+from machine import Pin
+import time
+
+led = Pin(15, Pin.OUT)
+
+while True:
+    led.toggle()
+    print("frambu viva")
+    time.sleep(0.5)
+```
+
+### 5. opción B: Arduino IDE
+
+#### 5.1 instalar el core para RP2040
+
+1. Abre **Arduino IDE → Settings…** (en Windows y Linux: **Archivo → Preferencias**).
+2. En **Additional boards manager URLs** (URLs adicionales de gestor de placas), pega:
+   ```
+   https://github.com/earlephilhower/arduino-pico/releases/download/global/package_rp2040_index.json
+   ```
+   Si ya tenías otra URL, por ejemplo la del ESP32, pon la nueva en una línea aparte.
+3. Abre el **Gestor de placas** desde el ícono de placa en la barra lateral.
+4. Busca **"pico"** e instala **"Raspberry Pi Pico/RP2040/RP2350" by Earle F. Philhower, III**.
+   - No instales "Arduino Mbed OS RP2040 Boards", que es otro core y no sirve para esto.
+
+<!-- PANTALLAZO PENDIENTE: docs/img/arduino-preferencias-url.png — ventana de Preferencias con la URL del core pegada -->
+<!-- PANTALLAZO PENDIENTE: docs/img/arduino-gestor-placas.png — Gestor de placas con el core de Earle Philhower instalado -->
+
+Documentación del core: <https://arduino-pico.readthedocs.io>
+
+#### 5.2 elegir la placa: usa "Raspberry Pi Pico"
+
+En **Herramientas → Placa → Raspberry Pi Pico/RP2040/RP2350**, elige **Raspberry Pi Pico**.
+
+![Placa Raspberry Pi Pico elegida en el Arduino IDE](docs/img/placa-raspberry-pi-pico.png)
+
+> **Importante:** en las primeras pruebas, con la placa **Generic RP2040** el programa se cargaba pero el puerto serie nunca aparecía. Con **Raspberry Pi Pico** funcionó. Mientras no se investigue más, usa Raspberry Pi Pico.
+
+Revisa también en **Herramientas**:
+
+| Opción | Valor |
+|---|---|
+| Flash Size | 2MB (no FS), para empezar |
+| USB Stack | Pico SDK |
+
+El Arduino IDE recuerda la última placa que usaste en cada sketch. Si antes trabajaste con otra placa, como una XIAO ESP32S3, **revisa siempre qué placa está elegida arriba** antes de pulsar Subir.
+
+#### 5.3 la primera carga: hazla a mano
+
+El botón **Subir** reinicia la placa automáticamente para ponerla en modo de carga, pero eso **solo funciona si la placa ya tiene un programa de Arduino corriendo**. La primera vez, o si viene de MicroPython, hay que entrar a mano:
+
+1. Pon la placa en **modo BOOTSEL** (sección 3).
+2. Pulsa **Subir**.
+
+Si el IDE muestra **"No drive to deploy"** aunque `RPI-RP2` esté visible en el Finder, es un tema de permisos de macOS (ver sección 7). Mientras tanto, puedes copiar el programa tú mismo desde la Terminal:
+
+```bash
+f=$(find ~/Documents/Arduino ~/Library/Caches/arduino/sketches -name "*.uf2" -print0 2>/dev/null | xargs -0 ls -t | head -1); echo "$f"; cp "$f" /Volumes/RPI-RP2/
+```
+
+Este comando busca el `.uf2` que el IDE generó más recientemente, muestra su ruta y lo copia a la placa. Otra forma es usar **Sketch → Exportar binario compilado** y arrastrar el `.uf2` de la carpeta `build` a `RPI-RP2`.
+
+#### 5.4 elegir el puerto y abrir el Monitor Serie
+
+Cuando el programa ya está corriendo:
+
+1. En el selector de placa y puerto, elige el **`/dev/cu.usbmodem…`** de Frambu.
+2. Abre el **Serial Monitor** y pon **115200 baud**.
+
+Estos puertos **no** son Frambu, así que no los elijas:
+
+![Selector de placa y puerto con solo puertos del sistema](docs/img/selector-placa-puerto.png)
+
+- `debug-console` y `Bluetooth-Incoming-Port` son del Mac.
+- `CricutAIR2-…` es una Cricut conectada por Bluetooth.
+
+<!-- PANTALLAZO PENDIENTE: docs/img/monitor-serie.png — Serial Monitor mostrando "frambu viva" y las líneas con contador y temperatura -->
+
+Desde ahí, las cargas siguientes deberían funcionar solas con **Subir**.
+
+### 6. ejemplos
+
+#### 6.1 prueba por puerto serie (sin componentes)
+
+Cada segundo imprime un contador, el tiempo encendida, la temperatura interna del chip y el estado del botón BOOTSEL. Sirve para comprobar que la placa funciona sin conectarle nada.
+
+```cpp
+// Prueba de puerto serie para Frambu (RP2040)
+
+unsigned long contador = 0;
+
+void setup() {
+  Serial.begin(115200);
+
+  // Espera hasta 5 s a que abras el Monitor Serie, para no perder los primeros mensajes
+  unsigned long inicio = millis();
+  while (!Serial && millis() - inicio < 5000) {
+    delay(10);
+  }
+
+  Serial.println();
+  Serial.println("=== frambu viva ===");
+  Serial.print("CPU: ");
+  Serial.print(F_CPU / 1000000);
+  Serial.println(" MHz");
+}
+
+void loop() {
+  contador++;
+
+  Serial.print("#");
+  Serial.print(contador);
+  Serial.print(" | encendida hace ");
+  Serial.print(millis() / 1000);
+  Serial.print(" s | temp chip: ");
+  Serial.print(analogReadTemp(), 1);
+  Serial.print(" °C | BOOTSEL: ");
+  Serial.println(BOOTSEL ? "apretado" : "suelto");
+
+  delay(1000);
+}
+```
+
+Resultado esperado (los MHz dependen de **Herramientas → CPU Speed**):
+
+```
+=== frambu viva ===
+CPU: 133 MHz
+#1 | encendida hace 1 s | temp chip: 27.3 °C | BOOTSEL: suelto
+```
+
+El core de Earle Philhower permite leer el botón BOOTSEL como entrada con la palabra `BOOTSEL`, así que puedes usarlo como botón de usuario. Ojo: si lo mantienes apretado **mientras conectas** el cable, la placa entra en modo de carga en vez de correr tu programa.
+
+#### 6.2 LED externo en GP15
+
+**Cableado:**
+
+```
+Frambu J2 pin 20 (GP15) ──── resistencia 330 Ω ──── pata LARGA del LED (+)
+                                                    pata CORTA del LED (−) ──── Frambu J2 pin 18 (GND)
+```
+
+- GP15 es el **pin 20** de la tira **J2**, el último de esa tira.
+- El **pin 18** es un GND que queda al lado. También sirven los GND de los pines 3, 8 y 13.
+- Para ubicar el pin 1 de J2, busca en la serigrafía un "1", un punto o un pad cuadrado.
+
+<!-- PANTALLAZO PENDIENTE: docs/img/cableado-led.jpg — foto de Frambu en protoboard con el LED en GP15 -->
+
+```cpp
+// LED externo en GP15 para Frambu
+// Ojo: no uses el nombre PIN_LED, porque el core ya lo define (vale 25)
+
+const int LED_EXTERNO = 15;
+
+void setup() {
+  pinMode(LED_EXTERNO, OUTPUT);
+  Serial.begin(115200);
+}
+
+void loop() {
+  // Con BOOTSEL apretado, parpadea más rápido
+  int espera = BOOTSEL ? 100 : 500;
+
+  digitalWrite(LED_EXTERNO, HIGH);
+  Serial.print("frambu viva | BOOTSEL: ");
+  Serial.println(BOOTSEL ? "apretado" : "suelto");
+  delay(espera);
+
+  digitalWrite(LED_EXTERNO, LOW);
+  delay(espera);
+}
+```
+
+### 7. solución de problemas
+
+Estos son los problemas que aparecieron en la primera prueba y cómo se resolvieron.
+
+#### "No drive to deploy" al pulsar Subir
+
+![Error No drive to deploy en el Arduino IDE](docs/img/error-no-drive.png)
+
+El IDE no encontró la unidad `RPI-RP2`. Puede pasar por tres motivos:
+
+| Causa | Cómo saberlo | Solución |
+|---|---|---|
+| La placa no está en modo BOOTSEL | `ls /Volumes` no muestra `RPI-RP2` | Entra a mano (sección 3) |
+| La placa está corriendo MicroPython | El puerto existe, pero el reinicio automático no funciona | Entra a mano en BOOTSEL; MicroPython no responde al reinicio del IDE |
+| macOS no deja al IDE ver la unidad | `RPI-RP2` aparece, pero el IDE no la encuentra | **Ajustes del Sistema → Privacidad y seguridad → Archivos y carpetas → Arduino IDE → Volúmenes extraíbles**. Mientras tanto, copia el `.uf2` a mano (sección 5.3) |
+
+#### el IDE dice "Resetting /dev/cu.debug-console"
+
+Está elegido un puerto que no es Frambu. `debug-console` es un puerto interno del Mac. Elige el `usbmodem` correcto o, si la placa está en modo BOOTSEL, deja el puerto sin elegir.
+
+#### el programa se carga pero no aparece ningún puerto serie
+
+- En las primeras pruebas, esto pasó con **Generic RP2040**. Cámbiate a **Raspberry Pi Pico** (sección 5.2).
+- En Macs con chip Apple, macOS puede preguntar **"¿Permitir que el accesorio se conecte?"** cada vez que la placa aparece como un dispositivo USB nuevo. Acepta el aviso, o revisa **Ajustes del Sistema → Privacidad y seguridad → Permitir que los accesorios se conecten**.
+- Para ver qué detecta el Mac por USB (2e8a es el código de fabricante de Raspberry Pi):
+  ```bash
+  system_profiler SPUSBHostDataType | grep -i -B2 -A8 "2e8a\|pico\|rp2"
+  ```
+
+#### error de compilación con `PIN_LED`
+
+```
+error: expected unqualified-id before numeric constant
+#define PIN_LED (25u)
+```
+
+`PIN_LED` ya está definido en el core. Usa otro nombre, como `LED_EXTERNO`.
+
+#### no aparece `RPI-RP2` ni ningún puerto
+
+1. Prueba **otro cable USB-C**, uno que sepas que transmite datos.
+2. Conecta la placa directo al Mac, sin hub.
+3. Revisa si el Mac ve la placa con el comando `system_profiler` de arriba.
+4. Si no aparece con ningún cable, revisa la soldadura del USB-C, el cristal y la orientación del RP2040. Las notas de revisión del diseño dejaron estos puntos como pendientes de verificar.
+
+#### la placa quedó "pegada" o no responde
+
+Desconéctala y vuelve a conectarla con **BOOTSEL** apretado. El modo de carga está en la memoria interna del chip y no se puede borrar, así que siempre puedes volver a cargarle un programa.
+
+### 8. avanzado: depuración por SWD
+
+Con el conector **J3** (SWCLK, GND, SWD) puedes cargar programas y depurar con puntos de interrupción. Necesitas un depurador, que puede ser:
+
+- Una [Raspberry Pi Debug Probe](https://www.raspberrypi.com/documentation/microcontrollers/debug-probe.html).
+- Una Pico normal con el firmware [debugprobe](https://github.com/raspberrypi/debugprobe).
+
+Se usa con OpenOCD o con la extensión [Raspberry Pi Pico para VS Code](https://marketplace.visualstudio.com/items?itemName=raspberry-pi.raspberry-pi-pico).
+
+### 9. enlaces
+
+| Recurso | Enlace |
+|---|---|
+| Página de Frambu | <https://piruetas.xyz/frambu/> |
+| Repositorio del hardware | <https://github.com/piruetasxyz/frambu> |
+| Core Arduino de Earle Philhower | <https://github.com/earlephilhower/arduino-pico> |
+| Documentación del core | <https://arduino-pico.readthedocs.io> |
+| MicroPython para Pico | <https://micropython.org/download/RPI_PICO/> |
+| Thonny | <https://thonny.org> |
+| Hoja de datos del RP2040 | <https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf> |
+| Hardware design with RP2040 | <https://datasheets.raspberrypi.com/rp2040/hardware-design-with-rp2040.pdf> |
+| Documentación de la Pico | <https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html> |
 
 ## estructura del repositorio
 
