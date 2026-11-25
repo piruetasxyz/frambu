@@ -1,5 +1,11 @@
 # frambu
 
+## About
+
+frambu is an open source hardware development board by [piruetas](https://piruetas.xyz), based on the Raspberry Pi RP2040 microcontroller, with 16 MB of QSPI flash, USB-C, a BOOTSEL button, an SWD header and two 1×20 2.54 mm headers with a Raspberry Pi Pico compatible pinout. The design is made in KiCad 10, for fabrication and assembly at JLCPCB, with its own local symbol, footprint and 3D model library included in `frambu-v-0-rev-a/bibliotecas/`. Hardware is licensed under CERN-OHL-P-2.0 and documentation under CC-BY-SA-4.0 (see [LICENSE.md](./LICENSE.md)). Documentation, schematic, board render and bill of materials (in Spanish): <https://piruetasxyz.github.io/frambu/>.
+
+## Acerca de
+
 placa de desarrollo abierta basada en el microcontrolador **RP2040** de Raspberry Pi,
 diseñada en [KiCad](https://www.kicad.org/) para fabricarse y ensamblarse en
 [JLCPCB](https://jlcpcb.com/).
@@ -64,7 +70,9 @@ que es la mejor referencia para entender por qué cada componente está ahí.
 ```text
 frambu/
 ├── README.md                     este archivo
-├── LICENSE                       licencia MIT
+├── LICENSE.md                    licencias de cada parte del proyecto
+├── LICENSES/                     textos completos de las licencias
+├── REUSE.toml                    licencia de cada archivo (especificación REUSE)
 ├── .gitignore                    ignora archivos temporales y de respaldo de KiCad
 ├── .github/workflows/            automatizaciones de GitHub Actions
 ├── docs/
@@ -317,4 +325,14 @@ de los condensadores y resistencias 0402), que no afectan la fabricación.
 
 ## licencia
 
-[MIT](LICENSE), © 2026 piruetas.
+frambu es (c) 2026 piruetas SpA / Aarón Montoya-Moraga.
+
+- Hardware (`frambu-v-*/`, una carpeta por revisión, con sus archivos de
+  fabricación y armado): [CERN-OHL-P-2.0](./LICENSES/CERN-OHL-P-2.0.txt).
+- Documentación (`docs/`): [CC-BY-SA-4.0](./LICENSES/CC-BY-SA-4.0.txt). las
+  capturas del esquemático y de la placa (`docs/images/`) son vistas del
+  hardware y llevan su licencia.
+- Scripts (`docs/*.py`): [MIT](./LICENSES/MIT.txt).
+- El nombre, logo y marca de piruetas no están cubiertos por estas licencias: ver [LicenseRef-piruetas-branding](./LICENSES/LicenseRef-piruetas-branding.txt).
+
+Ver [LICENSE.md](./LICENSE.md) para los detalles. El repositorio sigue la especificación [REUSE](https://reuse.software/).

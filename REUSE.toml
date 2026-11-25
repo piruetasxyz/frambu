@@ -1,0 +1,36 @@
+version = 1
+
+# Una carpeta por revisión de la placa, con sus archivos de fabricación (-fab)
+# y de armado (-pcba).
+[[annotations]]
+path = "frambu-v-*/**"
+SPDX-FileCopyrightText = "2026 piruetas SpA / Aarón Montoya-Moraga"
+SPDX-License-Identifier = "CERN-OHL-P-2.0"
+
+[[annotations]]
+path = ["panel/**", "docs/**"]
+SPDX-FileCopyrightText = "2026 piruetas SpA / Aarón Montoya-Moraga"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
+
+# Las capturas y los renders 3D son vistas del diseño de hardware, así que
+# llevan su licencia.
+[[annotations]]
+path = ["docs/images/**", "docs/videos/**"]
+SPDX-FileCopyrightText = "2026 piruetas SpA / Aarón Montoya-Moraga"
+SPDX-License-Identifier = "CERN-OHL-P-2.0"
+
+# Scripts que generan la BOM y los archivos de fabricación.
+[[annotations]]
+path = "docs/*.py"
+SPDX-FileCopyrightText = "2026 piruetas SpA / Aarón Montoya-Moraga"
+SPDX-License-Identifier = "MIT"
+
+[[annotations]]
+path = "branding/**"
+SPDX-FileCopyrightText = "2026 piruetas SpA / Aarón Montoya-Moraga"
+SPDX-License-Identifier = "LicenseRef-piruetas-branding"
+
+[[annotations]]
+path = ["README.md", "LICENSE.md", "REUSE.toml", ".gitignore", ".github/**"]
+SPDX-FileCopyrightText = "2026 piruetas SpA / Aarón Montoya-Moraga"
+SPDX-License-Identifier = "CC-BY-SA-4.0"
